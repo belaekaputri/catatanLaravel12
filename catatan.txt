@@ -1,1 +1,4 @@
 Routing dan Views di Laravel
+
+
+php artisan serve

@@ -36,3 +36,4 @@ Route::get('/about/{id}/detail', function ($id) {
 
 Route::view('/contact', 'pages.contact');
 //jika ada yang akses /contact,arahkan ke views>folder Pages> contact.blade.php
+Route::view('/product', 'pages.product');
