@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,3 +38,8 @@ Route::get('/about/{id}/detail', function ($id) {
 Route::view('/contact', 'pages.contact');
 //jika ada yang akses /contact,arahkan ke views>folder Pages> contact.blade.php
 Route::view('/product', 'pages.product');
+
+//controller
+Route::get('/product', [ProductController::class, 'getProduk']);
+//routing /produk mengarah ke Controller:ProductController method getProduk
+Route::get('/product/tambah', [ProductController::class, 'tambahProduk']);
