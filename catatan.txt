@@ -2,3 +2,5 @@ Routing dan Views di Laravel
 
 
 php artisan serve
+jika env sudah berhasil diubah database nya jalankan
+php artisan migrate
