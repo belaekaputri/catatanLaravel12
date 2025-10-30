@@ -40,6 +40,7 @@ Route::view('/contact', 'pages.contact');
 Route::view('/product', 'pages.product');
 
 //controller
-Route::get('/product', [ProductController::class, 'getProduk']);
+//Route::get('/product', [ProductController::class, 'getProduk']);
+Route::get('/product', [ProductController::class, 'index']);
 //routing /produk mengarah ke Controller:ProductController method getProduk
 Route::get('/product/tambah', [ProductController::class, 'tambahProduk']);
