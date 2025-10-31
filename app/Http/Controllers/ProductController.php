@@ -76,4 +76,16 @@ class ProductController extends Controller
     {
         return view('pages.addProduct');
     }*/
+
+    public function show($id)
+    {
+        //equilent
+        $data = produk::findOrFail($id);
+
+        //query builder
+        //DB::table('tb_produk')->where('id_produk', $id)->firstOrFail();
+        return view('pages.produk.detail', [
+            'produk' => $data
+        ]);
+    }
 }

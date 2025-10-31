@@ -47,3 +47,4 @@ Route::get('/product/tambah', [ProductController::class, 'tambahProduk']);
 
 Route::get('/product/create', [ProductController::class, 'create']); ///meanmpilkan halaman form data
 Route::post('/product', [ProductController::class, 'store']); //untuk mengelola halaman yang dikirim dari form data
+Route::get('/product/{id}', [ProductController::class, 'show']);
