@@ -13,7 +13,13 @@ class produk extends Model
 
 
     //data apa yan bisa kita isiikan ke tabel inisiasasi data yang dapat kita isi
-    protected $fillable = ['nama_produk', 'harga', 'stok'];
+    protected $fillable = [
+        'nama_produk',
+        'harga',
+        'stok',
+        'deskripsi_produk',
+        'kategori_id'
+    ];
 
 
 

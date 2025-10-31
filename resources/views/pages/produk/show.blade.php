@@ -3,12 +3,15 @@
 @section('konten')
 <h1>Daftar Produk Kami</h1>
 <hr>
-<a href="/product/tambah" type="button" class="btn btn-primary mb-3">Tambah Data</a>
+<a href="/product/create" type="button" class="btn btn-primary mb-3">Tambah Data</a>
 <div class="alert alert-primary">
     <b>Nama Toko:</b>{{$data_toko['nama_toko']}}<br>
     <b>Alamat Toko:{{$data_toko['alamat']}}</b><br>
     <b>Tipe Toko:{{$data_toko['type']}}</b>
 </div>
+@if (session('pesan'))
+<div class="alert alert-primary">{{session('pesan')}}</div>
+@endif
 <div class="card">
     <div class="card-header">Daftar Produk Kami</div>
 

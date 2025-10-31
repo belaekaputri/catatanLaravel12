@@ -44,3 +44,6 @@ Route::view('/product', 'pages.product');
 Route::get('/product', [ProductController::class, 'index']);
 //routing /produk mengarah ke Controller:ProductController method getProduk
 Route::get('/product/tambah', [ProductController::class, 'tambahProduk']);
+
+Route::get('/product/create', [ProductController::class, 'create']); ///meanmpilkan halaman form data
+Route::post('/product', [ProductController::class, 'store']); //untuk mengelola halaman yang dikirim dari form data
