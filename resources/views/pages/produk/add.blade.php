@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-floating">
-                        <textarea name="deskripsi_produk" id="" class="form-control" value="{{old('deskripsi_produk')}}"></textarea>
+                        <textarea name="deskripsi_produk" id="" class="form-control">{{old('deskripsi_produk')}}</textarea>
                         <label for="floatingTextarea2">Deskripsi Produk</label>
                         @error('deskripsi_produk')
                         <div id="emailHelp" class="form-text text-danger">{{$message}}</div>
