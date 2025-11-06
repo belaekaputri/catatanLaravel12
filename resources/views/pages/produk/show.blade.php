@@ -13,7 +13,20 @@
 <div class="alert alert-primary">{{session('pesan')}}</div>
 @endif
 <div class="card">
-    <div class="card-header">Daftar Produk Kami</div>
+    <div class="card-header d-flex justify-content-between align-items-center">Daftar Produk Kami
+
+        <div class="d-flex gap-2">
+            @if ( Request()->keyword != '')
+            <a href="/product" class="btn btn-info">
+                Reset
+            </a>
+            @endif
+            <form class="input-group" style="width:350px">
+                <input type="text" class="form-control" placeholder="Cari Data Produk" aria-label="Recipient’s username" aria-describedby="button-addon2" name="keyword" value="{{Request()->keyword}}">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Button</button>
+            </form>
+        </div>
+    </div>
 
     <div class="card-body">
         <table class="table table-striped table-bordered">
@@ -27,7 +40,8 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data_produk as $item)
+
+                @forelse ($data_produk as $item)
                 <tr>
                     <th scope="row">{{$loop->iteration}}</th><!--no otomTIS -->
                     <td>{{$item->nama_produk}}</td>
@@ -40,7 +54,16 @@
                         <a href="/product/{{$item->id_produk}}" class="btn btn-info">Detail</a>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center">Data yang anda cari tidak ada !</td>
+                </tr>
+                @endforelse
+
+
+
+
+
 
 
             </tbody>

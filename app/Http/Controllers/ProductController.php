@@ -9,14 +9,19 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $toko = [
             'nama_toko' => 'Makmur Jaya Abadi',
             'alamat' => 'Sungai Limau',
             'type' => 'Ruko'
         ];
-        $produk = produk::get(); //ambil semua data yang ada di tabel produk
+        $search = $request->keyword;
+        $produk = produk::when($search, function ($query, $search) {
+            return $query->where('nama_produk', 'like', "%{$search}%")
+                ->orWhere('deskripsi_produk', 'like', "%{$search}%");
+        })->get();
+        //  $produk = produk::get(); //ambil semua data yang ada di tabel produk
         //dd($data); debug data
         // $queryBuilder = DB::table('tb_produk')->get(); //query untuk mengambil semua data di tabel
         //dd($queryBuilder);
