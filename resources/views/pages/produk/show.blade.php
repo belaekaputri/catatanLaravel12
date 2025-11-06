@@ -33,7 +33,9 @@
                     <td>{{$item->nama_produk}}</td>
                     <td>{{$item->harga}}</td>
                     <td>{{$item->deskripsi_produk}}</td>
-                    <td><button type="button" class="btn btn-danger">Hapus</button>
+                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus{{$item->id_produk}}">
+                            Hapus
+                        </button>
                         <a href="/product/{{$item->id_produk}}/edit" class="btn btn-warning">Edit</a>
                         <a href="/product/{{$item->id_produk}}" class="btn btn-info">Detail</a>
                     </td>
@@ -45,4 +47,30 @@
         </table>
     </div>
 </div>
+
+@foreach ($data_produk as $item)
+<div class="modal fade" id="hapus{{$item->id_produk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/product/{{$item->id_produk}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin ingin menghapus Produk: {{$item->nama_produk}}?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Hapus Data</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endforeach
+
+
 @endsection

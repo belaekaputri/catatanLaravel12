@@ -123,6 +123,12 @@ class ProductController extends Controller
             'harga' => $request->harga,
             'deskripsi_produk' => $request->deskripsi_produk
         ]);
-        return redirect('product')->with('pesan', 'data berhasil di edit');
+        return redirect('/product')->with('pesan', 'data berhasil di edit');
+    }
+    public function destroy($id)
+    {
+        //query untuk menghapus data
+        produk::findOrFail($id)->delete();
+        return redirect('/product')->with('pesan', 'data berhasil di hapus');
     }
 }

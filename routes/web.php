@@ -50,3 +50,5 @@ Route::post('/product', [ProductController::class, 'store']); //untuk mengelola 
 Route::get('/product/{id}', [ProductController::class, 'show']); //untuk menampilkan halaman detail data
 Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
 Route::put('product/{id}', [ProductController::class, 'update']);
+
+Route::delete('/product/{id}', [ProductController::class, 'destroy']);
