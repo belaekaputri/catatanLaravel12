@@ -88,4 +88,41 @@ class ProductController extends Controller
             'produk' => $data
         ]);
     }
+    public function edit($id)
+    {
+        //mengambil satu data spesifik dari id yang dikirimkan parameter
+        $data = produk::findOrFail($id);
+        //dd($data);
+        return view(
+            'pages.produk.edit',
+            [
+                'data' => $data
+            ]
+        );
+    }
+
+
+
+
+    public function update($id, Request $request)
+    {
+
+        $request->validate([
+            'nama_produk' => 'required|min:8|max:12',
+            'harga' => 'required',
+            'deskripsi_produk' => 'required'
+        ], [
+            'nama_produk.min' => 'nama produk minimal 8 karakter',
+            'nama_produk.max' => 'nama produk maksimal 12 karakter',
+            'nama_produk.required' => 'inputan nama produk wajib diisi',
+            'harga.required' => 'inputan harga wajib diisi',
+            'deskripsi_produk.required' => 'inputan deskripsi produk wajib diisi'
+        ]);
+        produk::where('id_produk', $id)->update([
+            'nama_produk' => $request->nama_produk,
+            'harga' => $request->harga,
+            'deskripsi_produk' => $request->deskripsi_produk
+        ]);
+        return redirect('product')->with('pesan', 'data berhasil di edit');
+    }
 }
